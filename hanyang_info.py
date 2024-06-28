@@ -2,11 +2,8 @@ import requests
 from bs4 import BeautifulSoup
 import csv
 
-# years = [2019,2020,2021,2022,2023,2024]
-# months = list(range(1,13))
-
-years = [2024]
-months = list(range(4,6))
+years = [2019,2020,2021,2022,2023,2024]
+months = list(range(1,13))
 
 months = [str(x).zfill(2) for x in months]
 base_url = 'https://www.hanyang-u.hs.kr/?c=C01/C12/C121&sort=d_regis&orderby=desc&uid=&nyear={}&nmonth={}&nday=28'
@@ -30,7 +27,7 @@ for year in years:
             for text in text_elements:
                 menu_info.append(text.text)
 
-            csv_file = f'{year}_{month}.csv'
+            csv_file = 'hanyang_info/' + f'{year}_{month}.csv'
             with open(csv_file, mode='w', newline='', encoding='utf-8') as file:
                 writer = csv.writer(file)
 
